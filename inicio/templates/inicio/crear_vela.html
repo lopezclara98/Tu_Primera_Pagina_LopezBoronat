@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'crear_vela' %}">Crear vela</a>
+            <a href="{% url 'listado_de_velas' %}">Listado de velas</a>
+        </ul>
+    </nav>
+    <h1>"Creacion de vela"</h1>
+    <form method="POST" action="{% url 'crear_vela' %}">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button type="submit">Crear Vela</button>
+</body>
+</html>
