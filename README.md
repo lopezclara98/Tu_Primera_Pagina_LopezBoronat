@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tu Primera Página - Proyecto Django 💻
 
 Este es un proyecto realizado como parte del curso de Python de Coderhouse. Se trata de una página web para gestionar velas (crear y listar).
@@ -41,3 +42,7 @@ Ruta: http://127.0.0.1:8000/velas/
 Vista: listado_de_velas → muestra lista de todas las velas creadas.
 
 Archivo de plantilla: templates/inicio/listado_de_velas.html
+=======
+# Tu_Primera_Pagina_LopezBoronat
+Tercera Entrega - Tu primera página.
+>>>>>>> origin/main
