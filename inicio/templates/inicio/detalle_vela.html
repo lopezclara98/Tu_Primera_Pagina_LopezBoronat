@@ -1,0 +1,24 @@
+
+
+{% extends "base.html"%}
+
+{%block title%}
+<h1>{{vela}}</h1>
+{% endblock title%}
+
+{%block content_title%}
+Detalles de la vela
+{% endblock content_title%}
+
+{%block content%}
+<p>Nombre: {{vela.nombre}} </p>
+    <p>Aroma: {{vela.aroma}} </p>
+    <p>Color: {{vela.color}} </p>   
+    <p>Precio: ${{vela.precio}} </p>
+    <p>Fecha de creacion: {{vela.fecha_creacion}} </p>
+    {% if vela.imagen %}
+    <img src="{{ vela.imagen.url }}" alt="Imagen de la vela {{ vela.nombre }}" style="max-width: 400px;">
+{% else %}
+    <p>No hay imagen disponible.</p>
+{% endif %}
+{% endblock content%}

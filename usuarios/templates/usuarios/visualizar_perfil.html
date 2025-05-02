@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+
+{%block title%}
+    
+{% endblock title%}
+
+{%block content_title%}
+    Editar perfil
+{% endblock content_title%}
+
+{%block content%}
+
+<h1>Perfil del Usuario</h1>
+
+<p><strong>Nombre:</strong> {{ usuario.first_name }}</p>
+<p><strong>Apellido:</strong> {{ usuario.last_name }}</p>
+<p><strong>Email:</strong> {{ usuario.email }}</p>
+
+{% if infoextra %}
+    <p><strong>Campo extra:</strong> {{ infoextra.informacion_adicional }}</p>
+
+    {% if infoextra.avatar %}
+        <img src="{{ infoextra.avatar.url }}" alt="Avatar" height="150">
+    {% else %}
+        <p>Sin avatar</p>
+    {% endif %}
+{% else %}
+    <p>Sin información adicional</p>
+{% endif %}
+
+{% endblock content%}

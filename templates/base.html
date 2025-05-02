@@ -1,0 +1,98 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    {%load static%}
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>My app</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href={%static "css/styles.css"%} rel="stylesheet" />
+        <title>MyAPP | {%block title%}{%endblock title%}</title>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar bg-secondary text-uppercase fixed-top px-3 py-2">
+            <div class="container d-flex justify-content-between align-items-center">
+        
+                <div class="d-flex align-items-center gap-3">
+                    <a class="navbar-brand text-white fw-bold" href="{% url 'inicio' %}">Inicio</a>
+                    <a class="nav-link text-white" href="{% url 'listado_de_velas' %}">Listado de velas</a>
+                    <a class="nav-link text-white" href="{% url 'crear_vela' %}">Crear Vela</a>
+                </div>
+        
+                <div class="d-flex align-items-center gap-3">
+                    {% if request.user.is_authenticated %}
+                    <!-- Enlace al perfil (visualizar perfil) -->
+                    <a class="nav-link text-white" href="{% url 'visualizar_perfil' %}">
+                        {{ request.user.username }}'s Perfil
+                    </a>
+        
+                    <!-- Enlace para editar perfil -->
+                    <a class="nav-link text-white d-flex align-items-center gap-2" href="{% url 'editar_perfil' %}">
+                        {% if request.user.infoextra.avatar %}
+                            <img src="{{ request.user.infoextra.avatar.url }}" alt="Avatar" class="rounded-circle" width="40px" height="40px">
+                        {% endif %}
+                        Editar perfil
+                    </a>
+                    <!-- Botón de logout -->
+                    <form action="{% url 'logout' %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-light btn-sm" type="submit">Logout</button>
+                    </form>
+                    {% else %}
+                    <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link text-white" href="{% url 'registro' %}">Registrarse</a>
+                    {% endif %}
+                </div>
+        
+            </div>
+        </nav>
+        <style>
+            .navbar {
+                box-shadow: 0 2px 5px rgba(157, 135, 135, 0.815);
+                background-color: #9fd7aa !important;
+            }
+        
+            .navbar-brand, .nav-link, .text-white {
+                font-size: 1rem;
+                transition: color 0.3s;
+            }
+        
+            .nav-link:hover, .navbar-brand:hover {
+                color: #ffc107 !important;
+                text-decoration: none;
+            }
+        
+            .btn-outline-light:hover {
+                background-color: #ffc107;
+                color: #343a40;
+                border-color: #ffc107;
+            }
+        
+            form {
+                margin: 0;
+            }
+        </style>
+        <div class="container mt-5">
+            <h1 class="text-center text-primary my-4">
+                {% block content_title %} 
+                {% endblock content_title %}
+            </h1>
+    
+        {% block content%}
+        {% endblock content%}
+        </div>
+    </body>
+</html>

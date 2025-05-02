@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <ul>
-            <a href="{% url 'inicio' %}">Inicio</a>
-            <a href="{% url 'crear_vela' %}">Crear vela</a>
-            <a href="{% url 'listado_de_velas' %}">Listado de velas</a>
-            
-        </ul>
-    </nav>
-    <h1 class="text-center text-primary my-4">Listado de velas</h1>
 
+{% extends "base.html"%}
+
+{%block title%}
+    <title>Velas</title>
+{% endblock title%}
+
+{%block content_title%}
+    Listado de velas
+{% endblock content_title%}
+
+{%block content%}
 <div class="container">
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     {% for vela in velas %}
+    <li>  {{vela.nombre}} | 
+        <a href="{% url 'detalle_vela' vela.id %}">Ver más</a> 
+        <a href="{% url 'editar_vela' vela.id %}">Editar</a>
+        <a href="{% url 'eliminar_vela' vela.id %}">Eliminar</a>
+    </li>
+    
     <div class="col">
     <div class="card h-100 shadow-sm">
         <div class="card-body">
@@ -26,12 +26,11 @@
         <p class="card-text"><strong>Aroma:</strong> {{ vela.aroma }}</p>
         <p class="card-text"><strong>Color:</strong> {{ vela.color }}</p>
         <p class="card-text"><strong>Precio:</strong> ${{ vela.precio }}</p>
+        <p class="card-text"><strong>Fecha creacion:</strong> {{ vela.fecha_creacion }}</p>
         </div>
     </div>
     </div>
     {% endfor %}
 </div>
 </div>
-    
-</body>
-</html>
+{% endblock content%}

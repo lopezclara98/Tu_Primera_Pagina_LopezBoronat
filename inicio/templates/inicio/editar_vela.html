@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+
+{%block title%}
+<h1>{{vela}}</h1>
+{% endblock title%}
+
+{%block content_title%}
+Editar vela
+{% endblock content_title%}
+
+{%block content%}
+<form method="POST" action="{% url 'editar_vela' vela.id%}">
+    {% csrf_token %}
+    {{ form}}
+    <button type="submit">Editar Vela</button>
+{% endblock content%}

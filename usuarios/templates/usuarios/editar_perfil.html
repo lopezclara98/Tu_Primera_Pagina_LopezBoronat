@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+
+{%block title%}
+    
+{% endblock title%}
+
+{%block content_title%}
+    Editar perfil
+{% endblock content_title%}
+
+{%block content%}
+<form method="POST" action="{% url 'editar_perfil' %}", enctype = "multipart/form-data"> 
+    {% csrf_token %}
+    {{ formulario }}
+    <button type="submit">Acutalizar</button>
+</form>
+{% endblock content%}
